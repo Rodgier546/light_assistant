@@ -1,1 +1,10 @@
-
+# Przykładowa definicja usługi
+adjust_light:
+  description: "Adjust the light based on sensor input."
+  fields:
+    light_entity:
+      description: "The entity_id of the light to adjust."
+      example: "light.living_room"
+    light_sensor:
+      description: "The entity_id of the sensor to base adjustment on."
+      example: "sensor.light_level"

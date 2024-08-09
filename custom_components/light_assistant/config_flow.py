@@ -2,7 +2,6 @@ import voluptuous as vol
 from homeassistant import config_entries
 from homeassistant.core import callback
 from homeassistant.helpers import config_validation as cv
-
 from .const import DOMAIN
 
 class LightAssistantConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
@@ -25,7 +24,6 @@ class LightAssistantConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     @callback
     def async_get_options_flow(config_entry):
         return LightAssistantOptionsFlowHandler(config_entry)
-
 
 class LightAssistantOptionsFlowHandler(config_entries.OptionsFlow):
     async def async_step_init(self, user_input=None):

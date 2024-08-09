@@ -3,7 +3,8 @@
   "name": "Light Assistant",
   "version": "0.1.0",
   "documentation": "https://github.com/Rodgier546/light_assistant",
+  "requirements": [],
   "dependencies": [],
   "codeowners": ["@Rodgier546"],
-  "requirements": []
+  "config_flow": true
 }

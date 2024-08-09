@@ -11,13 +11,15 @@ class LightAssistantConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         if user_input is not None:
             return self.async_create_entry(title=user_input["name"], data=user_input)
 
+        data_schema = vol.Schema({
+            vol.Required("name"): str,
+            vol.Required("light_sensor"): cv.entity_id,
+            vol.Required("light_entity"): cv.entity_id
+        })
+
         return self.async_show_form(
             step_id="user",
-            data_schema=vol.Schema({
-                vol.Required("name"): str,
-                vol.Required("light_sensor"): cv.entity_id,
-                vol.Required("light_entity"): cv.entity_id
-            })
+            data_schema=data_schema
         )
 
     @staticmethod
@@ -30,10 +32,12 @@ class LightAssistantOptionsFlowHandler(config_entries.OptionsFlow):
         if user_input is not None:
             return self.async_create_entry(title="", data=user_input)
 
+        data_schema = vol.Schema({
+            vol.Required("light_sensor"): cv.entity_id,
+            vol.Required("light_entity"): cv.entity_id
+        })
+
         return self.async_show_form(
             step_id="init",
-            data_schema=vol.Schema({
-                vol.Required("light_sensor"): cv.entity_id,
-                vol.Required("light_entity"): cv.entity_id
-            })
+            data_schema=data_schema
         )

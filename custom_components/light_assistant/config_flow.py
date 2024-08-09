@@ -17,15 +17,11 @@ class LightAssistantConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             return self.async_create_entry(title=user_input["name"], data=user_input)
 
         _LOGGER.debug("Showing form")
-        try:
-            data_schema = vol.Schema({
-                vol.Required("name"): str,
-                vol.Required("light_sensor"): cv.entity_id,
-                vol.Required("light_entity"): cv.entity_id
-            })
-        except Exception as e:
-            _LOGGER.error(f"Error creating schema: {e}")
-            raise
+        data_schema = vol.Schema({
+            vol.Required("name"): str,
+            # vol.Required("light_sensor"): cv.entity_id,
+            # vol.Required("light_entity"): cv.entity_id
+        })
 
         _LOGGER.debug("Form schema created successfully")
         return self.async_show_form(
@@ -44,8 +40,9 @@ class LightAssistantOptionsFlowHandler(config_entries.OptionsFlow):
             return self.async_create_entry(title="", data=user_input)
 
         data_schema = vol.Schema({
-            vol.Required("light_sensor"): cv.entity_id,
-            vol.Required("light_entity"): cv.entity_id
+            vol.Required("name"): str,
+            # vol.Required("light_sensor"): cv.entity_id,
+            # vol.Required("light_entity"): cv.entity_id
         })
 
         return self.async_show_form(
